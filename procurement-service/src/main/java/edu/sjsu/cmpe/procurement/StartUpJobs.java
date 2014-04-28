@@ -60,7 +60,7 @@ public class StartUpJobs extends Job{
 
 		String user ="admin";
 		String password ="password";
-		String host = "54.215.210.214";
+		String host = "54.215.133.131";
 		int port = Integer.parseInt("61613");
 		//String destination = arg(args, 0, queue);
 		System.out.println("executing consumer");
@@ -70,12 +70,12 @@ public class StartUpJobs extends Job{
 		Connection connection = factory.createConnection(user, password);
 		connection.start();
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		Destination dest = new StompJmsDestination("/queue/68935.book.orders");//destination);
+		Destination dest = new StompJmsDestination("/queue/79209.book.orders");//destination);
 
 		MessageConsumer consumer = session.createConsumer(dest);
 		//System.out.println(.toString());
 
-		System.out.println("Waiting for messages from " + "/queue/68935.book.orders" + "...");
+		System.out.println("Waiting for messages from " + "/queue/79209.book.orders" + "...");
 		//System.out.println(consumer.receive(System.currentTimeMillis()));
 		//Message time=consumer.receive(System.currentTimeMillis());
 		String temp1="";
@@ -130,7 +130,7 @@ public class StartUpJobs extends Job{
 			System.out.println("inside post method");
 			Client client = Client.create();
 			WebResource webResource = client
-					.resource("http://54.215.210.214:9000/orders");
+					.resource("http://54.215.133.131:9000/orders");
 			String input="{\"id\" :\"68935\",\"order_book_isbns\":["+str+"]}";
 			ClientResponse response = webResource.type("application/json")
 					.post(ClientResponse.class, input);
@@ -154,7 +154,7 @@ public class StartUpJobs extends Job{
     			//WebResource webResource = client
     			//		.resource("http://localhost:8001/library/v1/books");
     			System.out.println("in side try");
-    			WebResource webResource=client.resource("http://54.215.210.214:9000/orders/68935");
+    			WebResource webResource=client.resource("http://54.215.133.131:9000/orders/79209");
     			ClientResponse response = webResource.accept("application/json")
     					.get(ClientResponse.class);
     			if (response.getStatus() != 200) {
@@ -188,10 +188,10 @@ public class StartUpJobs extends Job{
     	{
     		String user = "admin";
     		String password = "password";
-    		String host = "54.215.210.214";
+    		String host = "54.215.133.131";
     		int port = Integer.parseInt("61613");
-    		String destination_a = "/topic/68935.book.all";
-    		String destination_b="/topic/68935.book.computer";
+    		String destination_a = "/topic/79209.book.all";
+    		String destination_b="/topic/79209.book.computer";
 
     		StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
     		factory.setBrokerURI("tcp://" + host + ":" + port);
