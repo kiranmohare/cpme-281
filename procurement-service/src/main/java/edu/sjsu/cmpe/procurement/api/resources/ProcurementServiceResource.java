@@ -22,7 +22,7 @@ public class ProcurementServiceResource {
 		//WebResource webResource = client
 		//		.resource("http://localhost:8001/library/v1/books");
 		System.out.println("in side try");
-		WebResource webResource=client.resource("http://54.215.210.214:9000/orders/68935");
+		WebResource webResource=client.resource("http://54.215.133.131:9000/orders/79209");
 		ClientResponse response = webResource.accept("application/json")
 				.get(ClientResponse.class);
 		if (response.getStatus() != 200) {
@@ -59,7 +59,7 @@ public class ProcurementServiceResource {
 		try{
 			client=Client.create();
 			
-			WebResource webResource=client.resource("http://54.215.210.214:9000/orders");
+			WebResource webResource=client.resource("http://54.215.133.131:9000/orders");
 			String msg="{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}";
 			ClientResponse response=webResource.type("application/json").post(ClientResponse.class,msg);
 			
