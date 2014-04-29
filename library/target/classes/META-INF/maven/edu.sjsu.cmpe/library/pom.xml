@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>edu.sjsu.cmpe</groupId>
-	<artifactId>procurement-service</artifactId>
+	<artifactId>library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Procurement Service Scheduler</name>
+	<name>CMPE 273 RESTful Library Service</name>
 
 	<properties>
 		<dropwizard.version>0.6.2</dropwizard.version>
@@ -25,68 +25,33 @@
 	</repositories>
 
 	<dependencies>
-	<dependency>
-  <groupId>de.spinscale.dropwizard</groupId>
-  <artifactId>dropwizard-jobs</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  </dependency>
-	
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jms_1.1_spec</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.fusesource.stompjms</groupId>
-			<artifactId>stompjms-client</artifactId>
-			<version>1.13</version>
-		</dependency>
-	<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.8</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.8</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-    		<groupId>javax.ws.rs</groupId>
-    		<artifactId>javax.ws.rs-api</artifactId>
-    		<version>2.0</version>
-    		<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-  		<groupId>de.spinscale.dropwizard</groupId>
-  		<artifactId>dropwizard-jobs</artifactId>
-  		<version>1.0-SNAPSHOT</version>
-	</dependency>
 		<dependency>
 			<groupId>com.yammer.dropwizard</groupId>
 			<artifactId>dropwizard-core</artifactId>
 			<version>${dropwizard.version}</version>
 		</dependency>
 		<dependency>
+            <groupId>com.yammer.dropwizard</groupId>
+            <artifactId>dropwizard-views</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>apollo-stomp</artifactId>
 			<version>1.6</version>
+		</dependency>  
+		<dependency>
+			<groupId>org.glassfish.main.javaee-api</groupId>
+			<artifactId>javax.jms</artifactId>
+			<version>3.1.2.2</version>
 		</dependency>
-        <dependency>
-			<groupId>com.yammer.dropwizard</groupId>
-			<artifactId>dropwizard-client</artifactId>
-			<version>0.6.2</version>
-		</dependency>
-                
+		<dependency>
+			<groupId>org.fusesource.stompjms</groupId>
+			<artifactId>stompjms-client</artifactId>
+			<version>1.18</version>
+		</dependency>          
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -150,7 +115,7 @@
 									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>edu.sjsu.cmpe.procurement.ProcurementService</mainClass>
+									<mainClass>edu.sjsu.cmpe.library.LibraryService</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
