@@ -59,7 +59,7 @@ public class ProcureJobs extends Job{
 
 		String userName ="admin";
 		String password ="password";
-		String host = "54.193.56.218";
+		String host = "54.215.133.131";
 		int port = Integer.parseInt("61613");
 		System.out.println("executing consumer process");
 		StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
@@ -67,9 +67,9 @@ public class ProcureJobs extends Job{
 		Connection conn = factory.createConnection(userName, password);
 		conn.start();
 		Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		Destination dest = new StompJmsDestination("/queue/15566.book.orders");
+		Destination dest = new StompJmsDestination("/queue/79209.book.orders");
 		MessageConsumer consumer = session.createConsumer(dest);
-		System.out.println("Waiting for messages from " + "/queue/15566.book.orders" + "...");
+		System.out.println("Waiting for messages from " + "/queue/79209.book.orders" + "...");
 		String temp1="";
 		while(true) {
 		    Message msg = consumer.receive(5000);
@@ -122,8 +122,8 @@ public class ProcureJobs extends Job{
 	
 			Client client = Client.create();
 			WebResource webResource = client
-					.resource("http://54.193.56.218:9000/orders");
-			String input="{\"id\" :\"15566\",\"order_book_isbns\":["+str+"]}";
+					.resource("http://54.215.133.131:9000/orders");
+			String input="{\"id\" :\"79209\",\"order_book_isbns\":["+str+"]}";
 			ClientResponse response = webResource.type("application/json")
 					.post(ClientResponse.class, input);
 			if (response.getStatus() != 200) {
@@ -142,7 +142,7 @@ public class ProcureJobs extends Job{
     		ArrayList<String> library1=new ArrayList<String>();
     		
     			Client client = Client.create();
-    			WebResource webResource=client.resource("http://54.193.56.218:9000/orders/15566");
+    			WebResource webResource=client.resource("http://54.215.133.131:9000/orders/79209");
     			ClientResponse response = webResource.accept("application/json")
     					.get(ClientResponse.class);
     			if (response.getStatus() != 200) {
@@ -175,10 +175,10 @@ public class ProcureJobs extends Job{
     	{
     		String userName = "admin";
     		String password = "password";
-    		String host = "54.193.56.218";
+    		String host = "54.215.133.131";
     		int port = Integer.parseInt("61613");
-    		String destination_a = "/topic/15566.book.all";
-    		String destination_b="/topic/15566.book.computer";
+    		String destination_a = "/topic/79209.book.all";
+    		String destination_b="/topic/79209.book.computer";
 
     		StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
     		factory.setBrokerURI("tcp://" + host + ":" + port);
